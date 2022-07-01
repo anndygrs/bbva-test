@@ -1,3 +1,4 @@
+import { getLocaleDateFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,11 @@ export class DataComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
+    console.log('Data aqui');
   }
 
 }

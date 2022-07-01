@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  readInfo(info: any) {
-    console.log(info);
+  info: any;
+  evidence: any;
+  readInfo(facts: any) {
+    this.info = facts;
   }
 }

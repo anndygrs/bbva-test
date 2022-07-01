@@ -1,2 +1,15 @@
-<app-render></app-render>
 <app-data (data)="readInfo($event)"></app-data>
+<h2>Calidad del Aire</h2>
+<div>
+    <table id="info-table">
+        <tr>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Puntos IMECA</th>
+            <th>Hora de medición</th>
+        </tr>
+        <tr>
+            <app-render [evidence]="e" *ngFor="let e of info"></app-render>
+        </tr>
+    </table>
+</div>

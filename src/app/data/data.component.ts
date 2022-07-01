@@ -1,6 +1,6 @@
 import { getLocaleDateFormat } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-data',
@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataComponent implements OnInit {
 
-  data: any;
+  info: any;
+  @Output() data = new EventEmitter;
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -18,8 +19,8 @@ export class DataComponent implements OnInit {
 
   getData() {
     this.httpClient.get('https://api.datos.gob.mx/v1/calidadAire').subscribe((response: any) => {
-      this.data = response['results'];
-      console.log(this.data);
+      this.info = response['results'];
+      this.data.emit(this.info);
     });
   }
 

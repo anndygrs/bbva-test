@@ -1,4 +1,5 @@
 import { getLocaleDateFormat } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,14 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataComponent implements OnInit {
 
-  constructor() { }
+  data: any;
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData() {
-    console.log('Data aqui');
+    this.httpClient.get('https://api.datos.gob.mx/v1/calidadAire').subscribe((response: any) => {
+      this.data = response['results'];
+      console.log(this.data);
+    });
   }
 
 }
